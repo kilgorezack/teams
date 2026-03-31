@@ -2,13 +2,13 @@
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
   "manifestVersion": "1.17",
   "version": "1.0.0",
-  "id": "YOUR_AZURE_AD_APP_ID",
+  "id": "6cd9880c-ff40-4b2a-a601-17a72eb18fdd",
   "packageName": "com.quorum.app",
   "developer": {
     "name": "Quorum",
-    "websiteUrl": "https://YOUR_VERCEL_URL",
-    "privacyUrl": "https://YOUR_VERCEL_URL/#privacy",
-    "termsOfUseUrl": "https://YOUR_VERCEL_URL/#terms"
+    "websiteUrl": "https://quorum.summitlabs.one",
+    "privacyUrl": "https://quorum.summitlabs.one/#privacy",
+    "termsOfUseUrl": "https://quorum.summitlabs.one/#terms"
   },
   "name": {
     "short": "Quorum",
@@ -25,7 +25,7 @@
   "accentColor": "#6264A7",
   "configurableTabs": [
     {
-      "configurationUrl": "https://YOUR_VERCEL_URL/app/config.html",
+      "configurationUrl": "https://quorum.summitlabs.one/app/config.html",
       "canUpdateConfiguration": false,
       "scopes": ["groupchat"],
       "context": ["meetingSidePanel"]
@@ -35,7 +35,7 @@
     {
       "entityId": "quorum-sidepanel",
       "name": "Quorum",
-      "contentUrl": "https://YOUR_VERCEL_URL/app/index.html",
+      "contentUrl": "https://quorum.summitlabs.one/app/index.html",
       "scopes": ["groupchat"],
       "context": ["meetingSidePanel"]
     }
@@ -45,7 +45,7 @@
     "messageTeamMembers"
   ],
   "validDomains": [
-    "YOUR_VERCEL_DOMAIN",
+    "quorum.summitlabs.one",
     "*.supabase.co"
   ],
   "meetingExtensionDefinition": {
