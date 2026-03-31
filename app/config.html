@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quorum — Configure</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #f5f5fa;
+      color: #1f1f2e;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      max-width: 360px;
+      text-align: center;
+    }
+    .logo { font-size: 40px; margin-bottom: 12px; }
+    h1 { font-size: 20px; font-weight: 700; color: #6264A7; margin-bottom: 8px; }
+    p  { font-size: 13px; color: #6b6b8a; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">⚖️</div>
+    <h1>Quorum</h1>
+    <p>Click <strong>Save</strong> to add Quorum to your meeting.<br>
+       The voting panel will appear in the side panel during calls.</p>
+  </div>
+
+  <script src="https://res.cdn.office.net/teams-js/2.22.0/js/MicrosoftTeams.min.js"></script>
+  <script>
+    (async () => {
+      try {
+        await microsoftTeams.app.initialize();
+
+        microsoftTeams.pages.config.setValidityState(true);
+
+        microsoftTeams.pages.config.registerOnSaveHandler(saveEvent => {
+          microsoftTeams.pages.config.setConfig({
+            contentUrl: window.location.origin + '/app/index.html',
+            entityId: 'quorum-sidepanel',
+            suggestedDisplayName: 'Quorum',
+          });
+          saveEvent.notifySuccess();
+        });
+      } catch (e) {
+        console.error('Quorum config: Teams SDK init failed', e);
+      }
+    })();
+  </script>
+</body>
+</html>

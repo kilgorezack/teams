@@ -1,0 +1,8 @@
+{
+  "name": "quorum",
+  "version": "1.0.0",
+  "description": "Quorum — Teams Meeting Democracy App",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.0.0"
+  }
+}

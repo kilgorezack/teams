@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quorum</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+
+  <!-- Loading State -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="spinner"></div>
+    <p>Connecting to Quorum…</p>
+  </div>
+
+  <!-- Main App (hidden until init) -->
+  <div id="app" class="app" style="display:none;">
+
+    <!-- Header -->
+    <header class="app-header">
+      <span class="app-logo">⚖️</span>
+      <span class="app-title">Quorum</span>
+      <div class="presence-indicator" id="presence-indicator">
+        <span class="presence-dot"></span>
+        <span id="presence-count">1</span> here
+      </div>
+    </header>
+
+    <!-- End Meeting Section -->
+    <section class="vote-card" id="end-section">
+      <h2 class="section-title">Vote to End Meeting</h2>
+      <p class="section-desc">A simple majority of present participants is required.</p>
+      <button class="vote-btn" id="end-vote-btn" onclick="castEndVote()">
+        Raise Hand to End
+      </button>
+      <div class="progress-wrap">
+        <div class="progress-bar" id="end-progress-bar"></div>
+      </div>
+      <p class="vote-count" id="end-vote-count">0 of 0 voted</p>
+    </section>
+
+    <!-- Remove Participant Section -->
+    <section class="vote-card" id="remove-section">
+      <h2 class="section-title">Vote to Remove</h2>
+      <p class="section-desc">Nominate a participant, then the group votes.</p>
+
+      <div id="nominate-area">
+        <button class="vote-btn secondary" id="nominate-btn" onclick="showNominateInput()">
+          Nominate Someone
+        </button>
+        <div id="nominate-input-wrap" style="display:none;">
+          <input
+            type="text"
+            id="nominee-name-input"
+            class="text-input"
+            placeholder="Enter participant's name…"
+            maxlength="80"
+          />
+          <button class="vote-btn small" onclick="submitNomination()">Submit</button>
+          <button class="vote-btn small ghost" onclick="cancelNomination()">Cancel</button>
+        </div>
+      </div>
+
+      <div id="remove-vote-area" style="display:none;">
+        <div class="nominee-banner" id="nominee-banner">
+          Nominated: <strong id="nominee-display-name"></strong>
+        </div>
+        <button class="vote-btn" id="remove-vote-btn" onclick="castRemoveVote()">
+          Vote to Remove
+        </button>
+        <div class="progress-wrap">
+          <div class="progress-bar amber" id="remove-progress-bar"></div>
+        </div>
+        <p class="vote-count" id="remove-vote-count">0 of 0 voted</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Meeting Over Overlay -->
+  <div id="meeting-over-overlay" class="meeting-over-overlay" style="display:none;">
+    <canvas id="confetti-canvas"></canvas>
+    <div class="meeting-over-content">
+      <div class="meeting-over-icon">🎉</div>
+      <h1>Meeting Over!</h1>
+      <p>Quorum reached — the meeting has ended.</p>
+    </div>
+  </div>
+
+  <!-- Host Action Required Banner -->
+  <div id="host-action-banner" class="host-action-banner" style="display:none;">
+    <span class="host-action-icon">⚠️</span>
+    <div>
+      <strong>Host Action Required</strong>
+      <div id="host-action-text">Remove <span id="host-nominee-name"></span> from the meeting.</div>
+    </div>
+  </div>
+
+  <script>
+    // ── User-configurable constants ─────────────────────────────────────────────
+    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    // ───────────────────────────────────────────────────────────────────────────
+  </script>
+  <script src="https://res.cdn.office.net/teams-js/2.22.0/js/MicrosoftTeams.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+/* ============================================================
+   Quorum — Teams Side Panel Styles
+   320px panel, Teams purple accent #6264A7
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --purple: #6264A7;
+  --purple-dark: #4f5196;
+  --purple-light: #e8e8f4;
+  --amber: #d97706;
+  --amber-bg: #fffbeb;
+  --amber-border: #fcd34d;
+  --text: #1f1f2e;
+  --text-muted: #6b6b8a;
+  --bg: #f5f5fa;
+  --card-bg: #ffffff;
+  --border: #e0e0ec;
+  --radius: 10px;
+  --shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Loading Screen ───────────────────────────────────────── */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 16px;
+  color: var(--text-muted);
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--purple-light);
+  border-top-color: var(--purple);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── App Shell ────────────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 24px;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px 12px;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app-logo {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.app-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--purple);
+  flex: 1;
+  letter-spacing: 0.01em;
+}
+
+/* ── Presence Indicator ───────────────────────────────────── */
+.presence-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--purple-light);
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.presence-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #13a10e;
+  flex-shrink: 0;
+}
+
+/* ── Vote Cards ───────────────────────────────────────────── */
+.vote-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  margin: 12px 12px 0;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+.section-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: -4px;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.vote-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--purple);
+  color: #fff;
+  transition: background 0.15s, opacity 0.15s, transform 0.1s;
+  width: 100%;
+  letter-spacing: 0.01em;
+}
+
+.vote-btn:hover:not(:disabled) {
+  background: var(--purple-dark);
+}
+
+.vote-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.vote-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.vote-btn.secondary {
+  background: var(--purple-light);
+  color: var(--purple);
+  border: 1px solid var(--purple);
+}
+
+.vote-btn.secondary:hover:not(:disabled) {
+  background: #dcdcf0;
+}
+
+.vote-btn.small {
+  padding: 7px 12px;
+  font-size: 12px;
+  width: auto;
+  flex: 1;
+}
+
+.vote-btn.ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.vote-btn.ghost:hover:not(:disabled) {
+  background: var(--bg);
+}
+
+/* ── Progress Bar ─────────────────────────────────────────── */
+.progress-wrap {
+  background: var(--purple-light);
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--purple);
+  border-radius: 999px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-bar.amber {
+  background: var(--amber);
+}
+
+.progress-wrap:has(.progress-bar.amber) {
+  background: #fef3c7;
+}
+
+/* ── Vote Count ───────────────────────────────────────────── */
+.vote-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ── Text Input ───────────────────────────────────────────── */
+.text-input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+  color: var(--text);
+  background: #fff;
+  transition: border-color 0.15s;
+}
+
+.text-input:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 2px rgba(98, 100, 167, 0.15);
+}
+
+/* ── Nominate Input Wrap ──────────────────────────────────── */
+#nominate-input-wrap {
+  flex-direction: column;
+  gap: 8px;
+}
+
+#nominate-input-wrap .vote-btn-row {
+  display: flex;
+  gap: 8px;
+}
+
+/* When displayed as flex from JS, arrange nicely */
+[id="nominate-input-wrap"][style*="flex"] {
+  display: flex !important;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Nominee Banner ───────────────────────────────────────── */
+.nominee-banner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+
+.nominee-banner strong {
+  color: var(--text);
+}
+
+/* ── Meeting Over Overlay ─────────────────────────────────── */
+.meeting-over-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(98, 100, 167, 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  flex-direction: column;
+}
+
+#confetti-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.meeting-over-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  padding: 32px 24px;
+  animation: pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.meeting-over-icon {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+.meeting-over-content h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.meeting-over-content p {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* ── Host Action Banner ───────────────────────────────────── */
+.host-action-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--amber-bg);
+  border-top: 2px solid var(--amber-border);
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  z-index: 50;
+  animation: slide-up 0.3s ease forwards;
+}
+
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.host-action-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.host-action-banner strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--amber);
+  margin-bottom: 2px;
+}
+
+#host-action-text {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}

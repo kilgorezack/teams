@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.17",
+  "version": "1.0.0",
+  "id": "YOUR_AZURE_AD_APP_ID",
+  "packageName": "com.quorum.app",
+  "developer": {
+    "name": "Quorum",
+    "websiteUrl": "https://YOUR_VERCEL_URL",
+    "privacyUrl": "https://YOUR_VERCEL_URL/#privacy",
+    "termsOfUseUrl": "https://YOUR_VERCEL_URL/#terms"
+  },
+  "name": {
+    "short": "Quorum",
+    "full": "Quorum — Meeting Democracy"
+  },
+  "description": {
+    "short": "Vote to end meetings or remove participants.",
+    "full": "Quorum gives every meeting participant a democratic vote to end the meeting or nominate someone for removal. Real-time voting via the side panel."
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "accentColor": "#6264A7",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://YOUR_VERCEL_URL/app/config.html",
+      "canUpdateConfiguration": false,
+      "scopes": ["groupchat"],
+      "context": ["meetingSidePanel"]
+    }
+  ],
+  "staticTabs": [
+    {
+      "entityId": "quorum-sidepanel",
+      "name": "Quorum",
+      "contentUrl": "https://YOUR_VERCEL_URL/app/index.html",
+      "scopes": ["groupchat"],
+      "context": ["meetingSidePanel"]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "YOUR_VERCEL_DOMAIN",
+    "*.supabase.co"
+  ],
+  "meetingExtensionDefinition": {
+    "scenes": [],
+    "supportsStreaming": false
+  }
+}
