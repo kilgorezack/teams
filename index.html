@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teams Democracy — Democratic Meeting Management for Microsoft Teams</title>
+  <meta name="description" content="Give every meeting participant a voice. Teams Democracy brings ballot-box accountability to your 3-hour status updates." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner container">
+      <div class="nav-logo">
+        <div class="app-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="28" height="28" rx="6" fill="white"/>
+            <text x="14" y="20" text-anchor="middle" font-size="16" font-family="Inter, sans-serif">🗳️</text>
+          </svg>
+        </div>
+        <span class="logo-text">Teams <strong>Democracy</strong></span>
+      </div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#install" class="btn btn-nav">Add to Teams</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a href="#install" class="btn btn-primary">Add to Teams</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="badge-pill">🏆 Enterprise Ready &nbsp;·&nbsp; SOC 2 Type II Compliant &nbsp;·&nbsp; ISO 27001 Certified</div>
+      <h1 class="hero-headline">
+        Finally,<br/>
+        <span class="gradient-text">democracy comes</span><br/>
+        to your 3-hour<br/>
+        status update.
+      </h1>
+      <p class="hero-sub">
+        Teams Democracy gives every meeting participant a constitutionally-guaranteed right to end the meeting or remove a colleague — subject to a simple majority vote and the vague anxiety of being the one nominated.
+      </p>
+      <div class="hero-cta">
+        <a href="#install" class="btn btn-primary btn-lg" id="heroInstallBtn">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L10 14M10 14L6 10M10 14L14 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 17H17" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+          Add to Microsoft Teams
+        </a>
+        <a href="#how-it-works" class="btn btn-ghost btn-lg">Watch how it works →</a>
+      </div>
+      <p class="hero-disclaimer">Free for teams up to 5 participants. Because meetings that small should just be an email.</p>
+
+      <!-- Fake app screenshot / mockup -->
+      <div class="hero-mockup">
+        <div class="mockup-bar">
+          <span class="mockup-dot red"></span>
+          <span class="mockup-dot yellow"></span>
+          <span class="mockup-dot green"></span>
+          <span class="mockup-title">Weekly Sync — All Hands — Q3 Planning — Strategy Alignment</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-sidebar">
+            <div class="mockup-avatar active">JS</div>
+            <div class="mockup-avatar">TR</div>
+            <div class="mockup-avatar">KP</div>
+            <div class="mockup-avatar">ML</div>
+            <div class="mockup-avatar highlighted">BK</div>
+          </div>
+          <div class="mockup-main">
+            <div class="mockup-alert">
+              <div class="alert-icon">🗳️</div>
+              <div class="alert-content">
+                <div class="alert-title">Vote to End Meeting</div>
+                <div class="alert-sub">3 of 5 participants have voted. Quorum at 60%.</div>
+                <div class="vote-bar"><div class="vote-fill" style="width: 60%"></div></div>
+              </div>
+            </div>
+            <div class="mockup-alert danger">
+              <div class="alert-icon">🚪</div>
+              <div class="alert-content">
+                <div class="alert-title">Removal Nominated: Brad K.</div>
+                <div class="alert-sub">"Presents slides in Comic Sans." — Anonymous</div>
+                <div class="vote-bar"><div class="vote-fill danger-fill" style="width: 80%"></div></div>
+              </div>
+            </div>
+            <div class="mockup-buttons">
+              <button class="mock-btn mock-vote" id="mockVoteBtn">✋ Vote to End</button>
+              <button class="mock-btn mock-nominate">📣 Nominate Someone</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar">
+    <div class="container stats-inner">
+      <div class="stat">
+        <div class="stat-number" data-target="1247" data-suffix="">0</div>
+        <div class="stat-label">meetings ended democratically</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-number" data-target="3891" data-suffix="">0</div>
+        <div class="stat-label">coworkers peacefully removed</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-number" data-target="847" data-suffix="">0</div>
+        <div class="stat-label">hours reclaimed from unnecessary syncs</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-number" data-target="99" data-suffix="%">0</div>
+        <div class="stat-label">of removed participants "saw it coming"</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Core Features</div>
+        <h2 class="section-title">Enterprise-grade democracy,<br/>for your enterprise-grade meetings.</h2>
+        <p class="section-sub">Every feature has been battle-tested in meetings that definitely could have been an email.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card feature-large">
+          <div class="feature-icon-wrap purple">
+            <span class="feature-icon">🗳️</span>
+          </div>
+          <div class="feature-tag">Core</div>
+          <h3>Democratic Dismissal™</h3>
+          <p>Any participant can call for a vote to end the meeting at any time. A configurable quorum threshold (default: simple majority) triggers an immediate and binding dismissal. The calendar invite remains, but spiritually, it is over.</p>
+          <ul class="feature-bullets">
+            <li>Configurable quorum: 50%, 66%, or "unanimous except Dave"</li>
+            <li>Countdown timer with dramatic music (optional)</li>
+            <li>Automatic "this could have been an email" post-meeting notification</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrap red">
+            <span class="feature-icon">🚪</span>
+          </div>
+          <div class="feature-tag">Core</div>
+          <h3>Participant Removal Voting</h3>
+          <p>Nominate any participant for removal by majority vote. Reasons are optional but encouraged. "He said 'per my last email'" is a valid reason in 43 U.S. states.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrap blue">
+            <span class="feature-icon">📊</span>
+          </div>
+          <div class="feature-tag">Analytics</div>
+          <h3>Quorum Detection™</h3>
+          <p>Real-time tracking of who is actually present vs. who left their camera on and walked away to make a sandwich. Muted-and-unresponsive participants count as 0.5 votes.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrap green">
+            <span class="feature-icon">🛡️</span>
+          </div>
+          <div class="feature-tag">Governance</div>
+          <h3>Anonymous Ballot Mode</h3>
+          <p>Votes and nominations can be cast anonymously, protecting employees from retaliation from managers who "just want to check in" every day at 8:47 AM.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrap gold">
+            <span class="feature-icon">🏛️</span>
+          </div>
+          <div class="feature-tag">Compliance</div>
+          <h3>Roberts' Rules of Order Integration</h3>
+          <p>Full parliamentary procedure support. Move to table, second the motion, call the question. Your CEO will hate it. Your legal team will be cautiously intrigued.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrap orange">
+            <span class="feature-icon">⚡</span>
+          </div>
+          <div class="feature-tag">Premium</div>
+          <h3>Executive Veto Override</h3>
+          <p>Executives can override any vote. Because democracy has its limits, and those limits are usually the person who controls your bonus. Available on Enterprise tier. Costs extra. You know why.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrap teal">
+            <span class="feature-icon">📜</span>
+          </div>
+          <div class="feature-tag">Compliance</div>
+          <h3>Democratic Audit Log</h3>
+          <p>Full immutable record of all votes, nominations, and outcomes for HR review, team retrospectives, or that moment six months from now when someone says "I never voted to remove Kevin."</p>
+        </div>
+
+        <div class="feature-card feature-large">
+          <div class="feature-icon-wrap pink">
+            <span class="feature-icon">🤝</span>
+          </div>
+          <div class="feature-tag">Integrations</div>
+          <h3>Seamless Ecosystem Integration</h3>
+          <p>Teams Democracy connects with the tools your org already uses — or claims to use in every all-hands.</p>
+          <div class="integration-logos">
+            <div class="integration-chip">📅 Outlook Calendar</div>
+            <div class="integration-chip">💬 Teams Chat</div>
+            <div class="integration-chip">📊 Power BI</div>
+            <div class="integration-chip">🔒 Azure AD</div>
+            <div class="integration-chip">📋 SharePoint</div>
+            <div class="integration-chip">🤖 Copilot</div>
+          </div>
+          <p class="feature-note">* Copilot integration allows AI to vote on your behalf when you stop caring. Available Q3 2026.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header light">
+        <div class="section-eyebrow">How It Works</div>
+        <h2 class="section-title">From meeting tyranny to<br/>meeting democracy in 3 steps.</h2>
+        <p class="section-sub">Simpler than your org's expense reporting process. Significantly more impactful.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>Install the App</h3>
+            <p>Add Teams Democracy to your Microsoft Teams tenant in under 3 minutes. IT approval required at most companies. Good luck with that. We provide a pre-written email you can send to your IT department titled "This Is Definitely Not A Security Risk."</p>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>Join Your Meeting</h3>
+            <p>Teams Democracy activates automatically when you join any scheduled meeting. The app silently observes, waits, and watches — like a fair and impartial referee who is absolutely taking notes.</p>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>Exercise Your Rights</h3>
+            <p>When the meeting exceeds its scheduled time, or when the agenda is definitively lost, invoke your democratic rights. Vote to end. Nominate the colleague who has been sharing their screen for 40 minutes and hasn't found the file yet.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-detail">
+        <div class="process-box">
+          <div class="process-icon">🗳️</div>
+          <h4>End Meeting Vote</h4>
+          <ol class="process-steps">
+            <li>Any participant clicks "Vote to End"</li>
+            <li>All participants receive a discreet notification</li>
+            <li>60-second voting window opens</li>
+            <li>If quorum reached: meeting ends with dignity</li>
+            <li>If quorum missed: everyone knows who didn't vote, and they will live with that</li>
+          </ol>
+        </div>
+        <div class="process-box danger-box">
+          <div class="process-icon">🚪</div>
+          <h4>Removal Vote</h4>
+          <ol class="process-steps">
+            <li>Participant nominates a colleague (reason optional)</li>
+            <li>Nomination is shown to all participants anonymously</li>
+            <li>90-second voting window opens</li>
+            <li>If majority votes yes: participant is removed</li>
+            <li>Removed participant receives a tasteful "Your presence was not approved" notification</li>
+            <li>Follow-up calendar invite: "Let's Reconnect (Optional)" — automatically sent</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Testimonials</div>
+        <h2 class="section-title">Trusted by professionals<br/>at companies you've heard of.</h2>
+        <p class="section-sub">Real reviews from real people who have definitely used this product and are not at all made up.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card featured-testimonial">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-quote">I was 47 minutes into explaining our Q3 roadmap when the vote came in. 4-1. I respect the process. I do not respect that the one vote in my favor was my own.</p>
+          <div class="testimonial-author">
+            <div class="avatar-circle" style="background: #e74c3c;">DM</div>
+            <div class="author-info">
+              <div class="author-name">David M.</div>
+              <div class="author-title">VP of Product Strategy, <em>Removed from 3 meetings this quarter</em></div>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-quote">Finally, a tool that quantifies how little my presence adds to the recurring Tuesday standup. Five stars. I've been removed twice and each time felt like a performance review I actually deserved.</p>
+          <div class="testimonial-author">
+            <div class="avatar-circle" style="background: #8e44ad;">SR</div>
+            <div class="author-info">
+              <div class="author-name">Sarah R.</div>
+              <div class="author-title">Senior Engineer, <em>Currently on a 3-meeting removal streak</em></div>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-quote">Our all-hands meetings used to run 2 hours. Now they average 23 minutes because everyone knows a vote is coming. Attendance has never been higher. Engagement has never been more anxious.</p>
+          <div class="testimonial-author">
+            <div class="avatar-circle" style="background: #27ae60;">TC</div>
+            <div class="author-info">
+              <div class="author-name">Tom C.</div>
+              <div class="author-title">Chief People Officer, <em>Has never been nominated</em></div>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-quote">My manager got voted out of his own meeting. He called it "a learning moment." HR called it "a Teams Democracy moment." I called it the best Tuesday of my career.</p>
+          <div class="testimonial-author">
+            <div class="avatar-circle" style="background: #e67e22;">AL</div>
+            <div class="author-info">
+              <div class="author-name">Anonymous L.</div>
+              <div class="author-title">Mid-level Analyst, <em>Wishes to remain anonymous for obvious reasons</em></div>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-quote">I nominated Brad because he said "let's take this offline" and then scheduled another meeting. The vote was unanimous. Even Brad voted yes. I think he needed the break.</p>
+          <div class="testimonial-author">
+            <div class="avatar-circle" style="background: #2980b9;">JH</div>
+            <div class="author-info">
+              <div class="author-name">Jessica H.</div>
+              <div class="author-title">Design Lead, <em>Brad's colleague and reluctant adversary</em></div>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-quote">As the person who gets voted out the most on my team, I can say: it's made me a better communicator, a more empathetic listener, and a person who now prepares agendas in advance. 10/10 recommend for personal growth.</p>
+          <div class="testimonial-author">
+            <div class="avatar-circle" style="background: #16a085;">KW</div>
+            <div class="author-info">
+              <div class="author-name">Kevin W.</div>
+              <div class="author-title">Kevin, <em>The Meeting Kevin</em></div>
+            </div>
+            <div class="stars">★★★★☆</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="press-strip">
+        <p class="press-label">As covered in</p>
+        <div class="press-logos">
+          <span class="press-item">The Verge*</span>
+          <span class="press-item">TechCrunch*</span>
+          <span class="press-item">HBR*</span>
+          <span class="press-item">Hacker News*</span>
+          <span class="press-item">r/sysadmin*</span>
+        </div>
+        <p class="press-disclaimer">* Coverage was entirely speculative and consisted of our CEO posting a link to our homepage on LinkedIn.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header light">
+        <div class="section-eyebrow">Pricing</div>
+        <h2 class="section-title">Plans for every level of<br/>meeting-induced suffering.</h2>
+        <p class="section-sub">All plans include unlimited votes. Some plans include dignity.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-tier">Proletariat</div>
+          <div class="pricing-price">Free</div>
+          <div class="pricing-sub">For individuals and small teams</div>
+          <ul class="pricing-features">
+            <li>✓ Up to 5 participants per vote</li>
+            <li>✓ 3 end-meeting votes per month</li>
+            <li>✓ 1 removal nomination per week</li>
+            <li>✓ Basic audit log (72-hour retention)</li>
+            <li>✓ Standard "this could have been an email" notification</li>
+            <li class="pricing-no">✗ Anonymous ballot mode</li>
+            <li class="pricing-no">✗ Executive Veto Override</li>
+          </ul>
+          <a href="#install" class="btn btn-outline btn-full">Get Started Free</a>
+        </div>
+
+        <div class="pricing-card pricing-popular">
+          <div class="popular-badge">Most Popular</div>
+          <div class="pricing-tier">Representative Democracy</div>
+          <div class="pricing-price">$4<span class="pricing-period">/user/mo</span></div>
+          <div class="pricing-sub">For teams with something to lose</div>
+          <ul class="pricing-features">
+            <li>✓ Unlimited participants</li>
+            <li>✓ Unlimited votes</li>
+            <li>✓ Anonymous ballot mode</li>
+            <li>✓ Advanced quorum configuration</li>
+            <li>✓ Roberts' Rules integration</li>
+            <li>✓ 1-year audit log</li>
+            <li>✓ Removal reason templates ("per my last email", "Comic Sans", etc.)</li>
+            <li class="pricing-no">✗ Executive Veto Override</li>
+          </ul>
+          <a href="#install" class="btn btn-primary btn-full">Start Free Trial</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-tier">Enlightened Oligarchy</div>
+          <div class="pricing-price">$19<span class="pricing-period">/user/mo</span></div>
+          <div class="pricing-sub">For enterprises that want democracy to have a ceiling</div>
+          <ul class="pricing-features">
+            <li>✓ Everything in Representative Democracy</li>
+            <li>✓ Executive Veto Override (billed separately, obviously)</li>
+            <li>✓ Copilot AI proxy voting</li>
+            <li>✓ Custom quorum math (consult your legal team)</li>
+            <li>✓ SSO / Azure AD integration</li>
+            <li>✓ Unlimited audit log retention</li>
+            <li>✓ Priority support ("We will respond within 2 business meetings")</li>
+            <li>✓ White-labeling ("Teams Justice", "Synergy Vote", whatever)</li>
+          </ul>
+          <a href="#install" class="btn btn-outline btn-full">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">FAQ</div>
+        <h2 class="section-title">Questions we are legally<br/>required to answer.</h2>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What happens when the meeting host gets voted out?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Great question. The meeting continues without them. In our testing, 78% of meetings improved measurably after the host was removed. The host retains the calendar invite, receives a summary email titled "Here's What You Missed (Turns Out: Very Little)", and is welcome to reschedule at their own peril.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Can the CEO be voted out of a meeting?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Technically, yes. Practically, this has never happened. In our research, CEO removal votes always fail at the last second when participants remember who approves their PTO requests. The Executive Veto Override feature exists precisely for this edge case and costs an amount we don't publish publicly.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Is this GDPR compliant?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>We are delighted to report that "being voted out of a meeting" does not constitute personally identifiable information under GDPR Article 4. The audit log, however, does contain PII. We handle this data in full compliance with applicable regulations, which we have read most of.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What if I'm being targeted unfairly?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Teams Democracy includes an "Appeal Period" of 30 seconds during which the nominated participant may speak in their defense. Statistics show that 94% of appeals make things worse. We recommend using your 30 seconds to begin composing an email that summarizes the meeting's key points.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Can I vote to remove myself?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. This is called a "Graceful Departure" and it is, statistically, the most dignified exit option. 31% of our users have self-nominated at least once. We call them our power users. They have excellent boundaries and we respect them deeply.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What is the "Recursive Meeting Problem"?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>This occurs when a meeting is called to discuss the results of a previous Teams Democracy vote, which then generates a new vote, which generates another meeting. We have seen this cascade up to 7 layers deep. Our legal team refers to it as "the incident." Our engineers call it "a feature." Our terms of service have a clause about it now.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Does IT need to approve this?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. We provide a pre-written IT approval request email titled "Security Review: Teams Democracy App (Low Risk, High Morale)." We also provide a second email titled "Escalation: Teams Democracy App (Please Just Approve It)" and a third titled "Re: Re: Re: Teams Democracy App (We Are Begging You)."</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What happens to the meeting recording?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Meeting recordings are preserved in full, including the vote, the countdown, and the moment the removed participant's video tile shrinks and disappears. This footage is stored in Azure Blob Storage. We have considered making it available as a highlight reel but our lawyers said no, twice.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL CTA -->
+  <section class="cta-section" id="install">
+    <div class="container cta-inner">
+      <div class="cta-badge">🗳️</div>
+      <h2 class="cta-title">Your voice matters.<br/>Your coworker's <em>presence</em>... less so.</h2>
+      <p class="cta-sub">Join thousands of meeting participants who have taken back their afternoons, their Tuesdays, and their will to live.</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-white btn-xl" id="ctaInstallBtn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#6264A7"/><text x="12" y="17" text-anchor="middle" font-size="12" fill="white">T</text></svg>
+          Add to Microsoft Teams — It's Free
+        </a>
+        <a href="#" class="btn btn-ghost-white btn-xl">Request a Demo</a>
+      </div>
+      <p class="cta-fine-print">No credit card required. No approval from your manager required (we recommend proceeding without asking). Uninstall anytime, though you won't want to once Dave starts talking about his offsite framework again.</p>
+
+      <div class="trust-row">
+        <div class="trust-item">
+          <span class="trust-icon">🔒</span>
+          <span>SOC 2 Type II</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🇪🇺</span>
+          <span>GDPR Compliant</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🏛️</span>
+          <span>Microsoft Partner</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">✅</span>
+          <span>ISO 27001</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🗳️</span>
+          <span>Democratically Audited</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="app-icon small">
+            <span>🗳️</span>
+          </div>
+          <span class="logo-text">Teams <strong>Democracy</strong></span>
+        </div>
+        <p class="footer-tagline">Making meetings accountable,<br/>one ballot at a time.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link">𝕏</a>
+          <a href="#" class="social-link">in</a>
+          <a href="#" class="social-link">▶</a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <a href="#">Features</a>
+          <a href="#">Pricing</a>
+          <a href="#">Changelog</a>
+          <a href="#">Roadmap (Q3 2026)</a>
+          <a href="#">Status Page</a>
+        </div>
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <a href="#">Documentation</a>
+          <a href="#">IT Approval Templates</a>
+          <a href="#">Roberts' Rules Guide</a>
+          <a href="#">Nomination Etiquette</a>
+          <a href="#">Blog</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="#">About Us</a>
+          <a href="#">Careers (We're Hiring)</a>
+          <a href="#">Press Kit</a>
+          <a href="#">Partners</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Removal Rights Act</a>
+          <a href="#">GDPR (We Read It)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2026 Teams Democracy, Inc. All votes reserved. Teams Democracy is a satirical product. Any resemblance to a real Microsoft Teams app is entirely intentional and part of the joke. Microsoft Teams is a trademark of Microsoft Corporation, which has not endorsed this app, though we'd love a meeting to discuss it.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Confetti canvas (hidden by default) -->
+  <canvas id="confettiCanvas" style="position:fixed;top:0;left:0;pointer-events:none;z-index:9999;display:none;"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
